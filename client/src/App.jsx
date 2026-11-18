@@ -280,15 +280,15 @@ useEffect(() => {
 
 if (showAuth) {
   return (
-    <div className="app">
-      <section className="jobs-section">
+    <div className="app auth-page">
+      <section className="jobs-section auth-section">
         <h2>JobFinder</h2>
 
         <h3>
           {authMode === 'login' ? 'Welcome Back!' : 'Create Account'}
         </h3>
 
-        <form onSubmit={handleAuth} className="job-form">
+        <form onSubmit={handleAuth} className="job-form auth-form">
 
           {authMode === 'register' && (
             <input
@@ -584,7 +584,7 @@ if (showAuth) {
         <h2>Employer Dashboard</h2>
         <p className="subtitle">{jobs.length} jobs posted</p>
         {editingJob && (
-  <form onSubmit={handleEdit} className="job-form">
+  <form onSubmit={handleEdit} className="edit-job-form">
     <h3>Edit Job</h3>
 
     <input
@@ -671,9 +671,10 @@ if (showCandidateDashboard) {
           Track the jobs you have applied for.
         </p>
 
-        <button onClick={handleCandidateSearch}>
-  Refresh Applications
-</button>
+        <button className="refresh-applications-btn"
+                onClick={handleCandidateSearch}>
+           Refresh Applications
+        </button>
         <div className="job-grid">
           {candidateApplications.length === 0 ? (
             <p>No applications found yet.</p>
