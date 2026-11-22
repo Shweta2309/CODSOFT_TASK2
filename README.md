@@ -75,7 +75,7 @@ Installation and Setup
 
 ### Homepage
 
-![JobFinder Homepage](Screenshot/homepage.png)
+![JobFinder Homepage](./Screenshot/homepage.png)
 
 Author
 
