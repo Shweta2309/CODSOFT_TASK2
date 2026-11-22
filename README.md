@@ -39,7 +39,7 @@ Other Tools
 - Git & GitHub
 - Vercel
 - Render
-- JWT Authentication
+- JWT
 - Multer
 - Nodemailer
 
@@ -52,7 +52,7 @@ JobFinder/
 
 Live Demo
 
-[https://job-finder-kappa-neon.vercel.app]
+"Visit JobFinder" (https://job-finder-kappa-neon.vercel.app)
 
 Backend API
 
@@ -61,19 +61,24 @@ https://jobfinder-backend-rat3.onrender.com
 Installation and Setup
 
 1. Clone the repository.
-2. Install frontend dependencies.
-3. Install backend dependencies.
-4. Configure environment variables.
-5. Start the frontend and backend servers.
+2. Navigate to the client folder and install dependencies using "npm install".
+3. Navigate to the server folder and install dependencies using "npm install".
+4. Configure the required environment variables in the server ".env" file:
+   - MONGO_URI
+   - JWT_SECRET
+   - EMAIL_USER
+   - EMAIL_PASS
+5. Start the backend server using "npm start".
+6. Start the frontend development server using "npm run dev".
+
+##Screenshots
+
+##Homepage
+
+"JobFinder Homepage" (Screenshot/homepage.png)
 
 Author
 
 Shweta Kumari
 
 Full Stack Web Development Project
-
-## Screenshots
-
-### Homepage
-
-![JobFinder Homepage](Screenshot/homepage.png)
