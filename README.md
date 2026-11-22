@@ -71,9 +71,9 @@ Installation and Setup
 5. Start the backend server using "npm start".
 6. Start the frontend development server using "npm run dev".
 
-### Screenshots
+## Screenshots
 
-## Homepage
+### Homepage
 
 ![JobFinder Homepage](Screenshot/homepage.png)
 
