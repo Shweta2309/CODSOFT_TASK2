@@ -214,14 +214,17 @@ const handleDelete = async (id) => {
     alert(error.message);
   }
 };
+const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleApply = async (e) => {
   e.preventDefault();
+  if (isSubmitting) return;
 
   if (!resume) {
     alert('Please upload your resume.');
     return;
   }
+  setIsSubmitting(true);
 
   const formData = new FormData();
   formData.append('jobId', selectedJob._id);
@@ -237,6 +240,7 @@ const response = await fetch(`${import.meta.env.VITE_API_URL}/api/applications`,
     body: formData
   });
 
+
     const data = await response.json();
 
     if (!response.ok) {
@@ -246,9 +250,13 @@ const response = await fetch(`${import.meta.env.VITE_API_URL}/api/applications`,
     alert('Application submitted successfully!');
     setApplicant({ name: '', email: '' });
     setResume(null);
-  } catch (error) {
+  } 
+  catch (error) {
     alert(error.message || 'Could not submit application. Check your server.');
     console.error(error);
+  }
+  finally{
+    setIsSubmitting(false);
   }
 };
 const handleCandidateSearch = async () => {
@@ -545,8 +553,10 @@ if (showAuth) {
                   </div>
                 </div>
 
-                <button type="submit" className="submit-application-btn">
-                  Submit Application →
+                <button type="submit" 
+                        className="submit-application-btn"
+                        disabled= {isSubmitting} >
+                  {isSubmitting ? 'Submitting...' : 'Submit Application →'} 
                 </button>
 
               </form>

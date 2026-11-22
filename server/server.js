@@ -418,35 +418,42 @@ if (existingApplication) {
           message: 'Resume is required'
         });
       }
+console.log("Application request received:", new 
+  Date().toLocaleTimeString()
+);
 
-      const application = await Application.create({
-        jobId,
-        name: user.name,
-        email: user.email,
-        resume: req.file.filename
-      });
+    const application = await Application.create({
+  jobId,
+  name: user.name,
+  email: user.email,
+  resume: req.file.filename
+});
 
-      try {
-        await transporter.sendMail({
-          from: `"JobFinder" <${process.env.EMAIL_USER}>`,
-          to: user.email,
-          subject: 'Application Submitted Successfully',
-          text: `Hello ${user.name},
+transporter.sendMail({
+  from: `"JobFinder" <${process.env.EMAIL_USER}>`,
+  to: user.email,
+  subject: 'Application Submitted Successfully',
+  text: `Hello ${user.name},
 
 Your application for ${job.title} at ${job.company} has been submitted successfully.
 
 Thank you for using JobFinder!`
-        });
+})
+.then(() => {
+  console.log('Confirmation email sent successfully!');
+})
+.catch((emailError) => {
+  console.log('Email sending failed:', emailError.message);
+});
 
-        console.log('Confirmation email sent successfully!');
-      } catch (emailError) {
-        console.log('Email sending failed:', emailError.message);
-      }
+console.log("Sending success response:", 
+  new Date().toLocaleTimeString()
+);
 
-      res.status(201).json({
-        message: 'Application submitted successfully!',
-        application
-      });
+res.status(201).json({
+  message: 'Application submitted successfully!',
+  application
+});
 
     } catch (error) {
       if (req.file) {
